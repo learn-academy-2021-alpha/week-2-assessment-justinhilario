@@ -6,7 +6,10 @@
 
 <!-- HINT: Check the console in the browser developer tools for errors. -->
 
-
+<!-- // BUGS
+// BUG1 -- needed jsx div opening closing tags (line 43 and line 56)
+// BUG2 -- required "this.handleMoodOptions" to correctly call the method in the onClick (line 53)
+// BUG3 -- alter correctly call array of emojis with this.stat.moods (line38) -->
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -35,30 +38,28 @@
 
         handleMoodOptions = () => {
           let randomIndex = Math.floor(Math.random() * this.state.moods.length )
-          this.setState({ currentMood: moods[randomIndex] })
+          this.setState({ currentMood: this.state.moods[randomIndex] })
         }
 
         render(){
           return(
-
-              <h1>Welcome to the Mood Meter App</h1>
-
-              <h3>Mood Options:</h3>
-
+            <> 
+              <h1>
+                Welcome to the Mood Meter App
+              </h1>
+              <h3>
+                Mood Options:
+              </h3>
               <div style={{ fontSize: "40px", height: "50px"}}>
                 { this.state.currentMood }
               </div>
-
-              <button onClick={ handleMoodOptions }>
-                Click Here For Next Mood option
-              </button>
-
+              <button onClick= { this.handleMoodOptions }>
+                Click Here For Next Mood Option
+              </button> 
+            </>
           )
         }
       }
-
-
-
 
 
       // No need to change anything below this line
